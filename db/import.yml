@@ -24,6 +24,7 @@ tables:
         highway: ['crossing', 'turning_circle', 'street_lamp', 'traffic_signals', 'stop', 'give_way', 'service', 'residential', 'footway', 'pedestrian', 'motorway_junction', 'milestone', 'turning_loop', 'tertiary', 'secondary', 'unclassified', 'mini_roundabout', 'speed_camera', 'primary', 'track', 'path']
         historic: ['boundary_stone','building','memorial','ruins','wayside_cross','wayside_shrine','yes']
         leisure: ['common', 'swimming_pool','track']
+        railway: ['level_crossing', 'switch','signal','buffer_stop','crossing']
         tourism: ['artwork', 'viewpoint']
     columns:
       - {name: 'osm_id', type: id}
