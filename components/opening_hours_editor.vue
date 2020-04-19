@@ -10,7 +10,7 @@
           v-for="(hours, indexHours) in interval.hours"
           :key="indexHours"
         >
-          {{ hours }}
+          {{ hours.join('-') }}
           <v-btn
             icon
             @click="removeInterval(index, indexHours)">
@@ -113,7 +113,7 @@ export default {
         'ph': 'ph'
       },
       selectTime: false,
-      interval: '',
+      interval: [],
       selectedWeekDays: [],
       openingHours: this.value,
       indexSubInterval: -1,
@@ -150,7 +150,7 @@ export default {
       if (this.openingHours[indexDay].hours.length === 0) {
         this.openingHours.splice(indexDay, 1);
       }
-      this.$emit('input', this.openingHours);
+      this.emitInput();
     },
 
     next() {
@@ -165,7 +165,13 @@ export default {
         this.openingHours[this.indexSubInterval].hours.push(this.interval);
       }
       this.resetValues();
-      this.$emit('input', this.openingHours);
+      this.emitInput();
+    },
+
+    emitInput() {
+      this.$emit('input', this.openingHours.map((i) => {
+        return { ...i, hours: i.hours.map(h => h.join('-')) };
+      }));
     },
 
     resetValues() {
